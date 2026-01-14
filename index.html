@@ -107,6 +107,31 @@
             color: #555;
         }
 
+        /* Media layout for experience sections (text left, image right) */
+        .media {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .media-text {
+            flex: 1 1 420px;
+        }
+
+        .media-image {
+            flex: 0 0 320px;
+            max-width: 40%;
+        }
+
+        .media-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
         /* Contact Form */
         .contact-form {
             max-width: 600px;
@@ -184,6 +209,15 @@
             .banner p {
                 font-size: 0.95em;
             }
+
+            .media {
+                flex-direction: column;
+            }
+
+            .media-image {
+                max-width: 100%;
+                flex: 1 1 100%;
+            }
         }
     </style>
 </head>
@@ -198,7 +232,7 @@
     <aside class="sidebar">
         <nav>
             <ul>
-                <li><a href="#area1">Area1 Experience</a></li>
+                <li><a href="#area1">Mobile Experience</a></li>
                 <li><a href="#area2">Area2 Experience</a></li>
                 <li><a href="#area3">Area3 Experience</a></li>
                 <li><a href="#area4">Area4 Experience</a></li>
@@ -211,8 +245,15 @@
     <main class="main-content">
         <!-- Area 1 -->
         <section id="area1" class="section">
-            <h2>Area1 Experience</h2>
-            <p>Add your Area1 experience details here. Describe your skills, projects, and achievements in this area.</p>
+            <h2>Mobile Experience</h2>
+            <div class="media">
+                <div class="media-text">
+                    <p>I build polished mobile applications for both native and cross-platform environments. My work spans Android (Kotlin), iOS, Flutter, and React Native—focusing on performant UI, clean architecture, and seamless user experiences. I've led mobile features from concept to release, integrating REST/GraphQL APIs, push notifications, and analytics.</p>
+                </div>
+                <div class="media-image">
+                    <img src="assets/mobile.jpg" alt="Mobile development on a smartphone">
+                </div>
+            </div>
         </section>
 
         <!-- Area 2 -->
