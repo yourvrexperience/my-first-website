@@ -185,6 +185,125 @@
             transform: translateY(-2px);
         }
 
+        .vr-videos {
+
+            display: flex;
+
+            gap: 20px;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+        }
+
+        .vr-videos iframe {
+
+            max-width: 100%;
+
+        }
+
+        .timeline {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            position: relative;
+
+            margin: 40px 0;
+
+        }
+
+        .timeline::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 0;
+
+            right: 0;
+
+            height: 2px;
+
+            background: #667eea;
+
+            z-index: 0;
+
+        }
+
+        .timeline-item {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            position: relative;
+
+            z-index: 1;
+
+            top: 35px;
+        }
+
+        .timeline-dot {
+
+            width: 20px;
+
+            height: 20px;
+
+            background: #667eea;
+
+            border-radius: 50%;
+
+            margin-bottom: 10px;
+
+        }
+
+        .timeline-content h3 {
+
+            margin: 0;
+
+            color: #667eea;
+
+            font-size: 1.2em;
+
+        }
+
+        .timeline-content p {
+
+            margin: 5px 0 0 0;
+
+            color: #555;
+
+            font-size: 0.9em;
+
+        }
+
+        .certifications {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+
+        }
+
+        .certifications iframe {
+
+            border: 1px solid #e0e0e0;
+
+            border-radius: 5px;
+
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .sidebar {
@@ -218,6 +337,10 @@
                 max-width: 100%;
                 flex: 1 1 100%;
             }
+
+            .certifications {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -225,7 +348,7 @@
     <!-- Banner -->
     <header class="banner">
         <h1>Esteban Gallardo Garcia</h1>
-        <p>I'm a computer engineer specialized in mobile development, AI development, Area3 Experience and Area4 Experience</p>
+        <p>I'm a computer engineer specialized in mobile development, AI development, VR Experience and game development experience</p>
     </header>
 
     <!-- Sidebar Navigation -->
@@ -234,8 +357,9 @@
             <ul>
                 <li><a href="#area1">Mobile Experience</a></li>
                 <li><a href="#area2">AI Experience</a></li>
-                <li><a href="#area3">Area3 Experience</a></li>
-                <li><a href="#area4">Area4 Experience</a></li>
+                <li><a href="#area3">VR Experience</a></li>
+                <li><a href="#area4">Game development Experience</a></li>
+                <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -271,14 +395,51 @@
 
         <!-- Area 3 -->
         <section id="area3" class="section">
-            <h2>Area3 Experience</h2>
-            <p>Add your Area3 experience details here. Describe your skills, projects, and achievements in this area.</p>
+            <h2>VR Experience</h2>
+            <div class="vr-videos">
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/jVzLzQZ5bZ4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/MBoBPXdZbZw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/BIeCL8yoiEw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </section>
 
         <!-- Area 4 -->
         <section id="area4" class="section">
-            <h2>Area4 Experience</h2>
-            <p>Add your Area4 experience details here. Describe your skills, projects, and achievements in this area.</p>
+            <h2>Game Development Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Java</h3>
+                        <p>2000-2008</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Flash</h3>
+                        <p>2006-2012</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Unity</h3>
+                        <p>2010-Nowadays</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications" class="section">
+            <h2>Certifications</h2>
+            <div class="certifications">
+                <iframe src="docs/Create_Portfolio_With_Github_Pages_Course_Definition.pdf" width="100%" height="400px" frameborder="0"></iframe>
+                <iframe src="docs/Create_Portfolio_With_Github_Pages_Instructional_Analysis.pdf" width="100%" height="400px" frameborder="0"></iframe>
+                <iframe src="docs/VRChat_MultiBall_Rugby_Development_Course.pdf" width="100%" height="400px" frameborder="0"></iframe>
+                <iframe src="docs/VRChat_MultiBall_Rugby_Instructional_Analysis.pdf" width="100%" height="400px" frameborder="0"></iframe>
+            </div>
         </section>
 
         <!-- Contact Form -->
