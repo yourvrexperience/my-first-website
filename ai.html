@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esteban Gallardo Garcia - AI Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-bar .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-bar .nav-home {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-bar .nav-home:hover {
+            opacity: 0.8;
+        }
+
+        .nav-bar .page-title {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .main-content {
+            margin-left: 0;
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section p {
+            line-height: 1.8;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* Carousel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            margin-bottom: 40px;
+        }
+
+        .carousel-inner {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            width: 33.333%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: block;
+            text-decoration: none;            
+        }
+
+        .carousel-item:nth-child(1) {
+            background-image: url('assets/ai1.jpg'); /* Placeholder, replace with actual image */
+        }
+
+        .carousel-item:nth-child(2) {
+            background-image: url('assets/ai2.jpg'); /* Placeholder */
+        }
+
+        .carousel-item:nth-child(3) {
+            background-image: url('assets/ai3.jpg'); /* Placeholder */
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .indicator.active {
+            background-color: white;
+        }
+
+        /* Text sections */
+        .text-sections {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .text-section {
+            flex: 1;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .text-section h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .text-section p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Vertical Carousel */
+        .vertical-carousel {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            margin-top: 20px;
+        }
+
+        .vertical-carousel-inner {
+            display: flex;
+            flex-direction: column;
+            height: 300%;
+            transition: transform 0.5s ease;
+        }
+
+        .vertical-slide {
+            height: 33.333%;
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        .slide-content {
+            display: flex;
+            width: 100%;
+            align-items: center;
+        }
+
+        .text-left {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .text-left h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .text-left p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .image-right {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .image-right img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .vertical-indicators {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .vertical-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(102, 126, 234, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .vertical-indicator.active {
+            background-color: #667eea;
+        }
+
+    :root{
+      --bg:#ffffff;
+      --ring:#111;
+      --shadow: rgba(0,0,0,.12);
+
+      --ease: cubic-bezier(.2,.8,.2,1);
+
+      /* sizing */
+      --stage: min(86vmin, 720px);
+      --ring-size: calc(var(--stage) * 0.82);
+
+      --node: clamp(62px, 10vmin, 92px);
+      --node-selected: clamp(190px, 28vmin, 290px);
+      --node-unselected: clamp(52px, 8vmin, 78px);
+
+      --stroke: 6px;
+      --selected-stroke: 8px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+        margin:0;
+        min-height:100vh;
+        background:var(--bg);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        color:#111;
+    }
+
+    .stage{
+      width:var(--stage);
+      height:var(--stage);
+      position:relative;
+      display:grid;
+      place-items:center;
+      margin: 0 auto;
+    }
+
+    /* Orbit ring */
+    .ring{
+      width:var(--ring-size);
+      height:var(--ring-size);
+      border: var(--stroke) solid var(--ring);
+      border-radius:50%;
+      position:absolute;
+      inset:auto;
+      pointer-events:none;
+    }
+
+    /* Node base */
+    .node{
+      position:absolute;
+      width:var(--node);
+      height:var(--node);
+      border-radius:50%;
+      border: var(--stroke) solid #111;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      user-select:none;
+      transform: translate(-50%, -50%) scale(1);
+      transform-origin:center;
+      transition:
+        transform 520ms var(--ease),
+        width 520ms var(--ease),
+        height 520ms var(--ease),
+        opacity 420ms var(--ease),
+        filter 420ms var(--ease);
+      box-shadow: 0 10px 22px var(--shadow);
+      overflow:hidden;
+    }
+
+    .node:focus-visible{
+      outline: 4px solid rgba(0,0,0,.25);
+      outline-offset: 6px;
+    }
+
+    /* Inner content wrapper */
+    .node__inner{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+      text-align:center;
+      transition: opacity 260ms var(--ease), transform 520ms var(--ease);
+    }
+
+    .node__label{
+      font-weight:700;
+      font-size: clamp(12px, 2.2vmin, 16px);
+      letter-spacing:.2px;
+    }
+
+    /* Expanded text (only visible in selected) */
+    .node__details{
+      opacity:0;
+      transform: translateY(10px);
+      transition: opacity 260ms var(--ease), transform 520ms var(--ease);
+      padding: 0 10px;
+    }
+
+    .node__title{
+      font-weight:800;
+      font-size: clamp(16px, 3.2vmin, 22px);
+      margin-bottom: 10px;      
+    }
+
+    .node__desc{
+      font-size: clamp(12px, 2.3vmin, 14px);
+      line-height:1.25;
+      opacity:.95;
+    }
+
+    /* States */
+    .node.is-selected{
+      width: var(--node-selected);
+      height: var(--node-selected);
+      border-width: var(--selected-stroke);
+      z-index: 10;
+      filter: saturate(1.05);
+    }
+
+    .node.is-selected .node__inner{
+      align-items:flex-start;
+      justify-content:flex-start;
+      flex-direction:column;
+      text-align:center;
+      padding: 28px 18px 16px;
+      gap: 10px;
+    }
+
+    .node.is-selected .node__label{
+      display:none; /* label replaced by title in expanded state */
+    }
+
+    .node.is-selected .node__details{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    .node.is-unselected{
+      width: var(--node-unselected);
+      height: var(--node-unselected);
+      opacity: .92;
+      z-index: 2;
+      filter: saturate(.95) brightness(.98);
+    }
+
+    .node.is-unselected .node__details{
+      display:none;
+    }
+
+    /* Slight dim for unselected labels, keep readable */
+    .node.is-unselected .node__label{
+      opacity:.95;
+      font-weight:700;
+    }
+
+    /* Positioning: nodes are placed by JS using CSS variables --x --y (percent) */
+    .node{
+      left: calc(var(--x) * 1%);
+      top:  calc(var(--y) * 1%);
+    }
+
+    /* Color themes per node */
+    .node[data-color="gold"]{ background:#d9b24a; }
+    .node[data-color="pink"]{ background:#f28ac0; }
+    .node[data-color="blue"]{ background:#26a7df; }
+    .node[data-color="green"]{ background:#6fe67d; }
+
+    /* Helpful caption (optional) */
+    .hint{
+      position:absolute;
+      bottom: -44px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      opacity:.7;
+      text-align:center;
+      width: 100%;
+      pointer-events:none;
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .node, .node__inner, .node__details{
+        transition:none !important;
+      }
+    }
+
+    /* Stage container and node panel */
+    .stage-container {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .node-panel {
+      flex: 1;
+      max-width: 400px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+      padding: 30px;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .node-panel[data-color="gold"] {
+      border-color: #d9b24a;
+    }
+
+    .node-panel[data-color="pink"] {
+      border-color: #f28ac0;
+    }
+
+    .node-panel[data-color="blue"] {
+      border-color: #26a7df;
+    }
+
+    .node-panel[data-color="green"] {
+      border-color: #6fe67d;
+    }
+
+    .panel-header h3 {
+      margin: 0 0 15px 0;
+      color: #667eea;
+      font-size: 1.5em;
+    }
+
+    .panel-content p {
+      line-height: 1.6;
+      color: #555;
+      margin: 0;
+    }
+    </style>
+</head>
+<body>
+
+
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-home">← Home</a>
+            <div class="page-title">AI Development</div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="hero">
+            <div class="carousel" id="carousel">
+                <div class="carousel-inner" id="carouselInner">
+                    <a class="carousel-item" href="ai-companion.html"></a>
+                    <a class="carousel-item" href="programming-ai.html"></a>
+                    <a class="carousel-item" href="tools.html"></a>
+                </div>
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-slide="0"></div>
+                    <div class="indicator" data-slide="1"></div>
+                    <div class="indicator" data-slide="2"></div>
+                </div>
+            </div>
+
+            <div class="text-sections">
+                <div class="text-section" id="text1">
+                    <h3 id="title1">AI as a companion</h3>
+                    <p id="desc1">We are exploring how LLM can helps us in our journey.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>AI Projects</h2>
+            <div class="vertical-carousel" id="carousel1">
+                <div class="vertical-carousel-inner" id="carouselInner1">
+                    <div class="vertical-slide">
+                        <div class="slide-content">
+                            <div class="text-left">
+                                <h3>Project 1: AI Chatbot</h3>
+                                <p>Developed an intelligent chatbot using natural language processing to assist users with various queries.</p>
+                            </div>
+                            <div class="image-right">
+                                <img src="assets/ai1.jpg" alt="AI Chatbot Project">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-slide">
+                        <div class="slide-content">
+                            <div class="text-left">
+                                <h3>Project 2: Image Recognition</h3>
+                                <p>Built a computer vision system capable of recognizing objects in images with high accuracy.</p>
+                            </div>
+                            <div class="image-right">
+                                <img src="assets/ai2.jpg" alt="Image Recognition Project">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-slide">
+                        <div class="slide-content">
+                            <div class="text-left">
+                                <h3>Project 3: Data Analysis Tool</h3>
+                                <p>Created a powerful data analysis tool that leverages machine learning for insights and predictions.</p>
+                            </div>
+                            <div class="image-right">
+                                <img src="assets/ai3.jpg" alt="Data Analysis Tool Project">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-indicators">
+                    <div class="vertical-indicator active" data-slide="0"></div>
+                    <div class="vertical-indicator" data-slide="1"></div>
+                    <div class="vertical-indicator" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>AI Skills</h2>
+            <div class="vertical-carousel" id="carousel2">
+                <div class="vertical-carousel-inner" id="carouselInner2">
+                    <div class="vertical-slide">
+                        <div class="slide-content">
+                            <div class="text-left">
+                                <h3>Machine Learning</h3>
+                                <p>Proficient in various ML algorithms including supervised and unsupervised learning techniques.</p>
+                            </div>
+                            <div class="image-right">
+                                <img src="assets/ai4.jpg" alt="Machine Learning Skill">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-slide">
+                        <div class="slide-content">
+                            <div class="text-left">
+                                <h3>Deep Learning</h3>
+                                <p>Experienced with neural networks, CNNs, RNNs, and transformer architectures.</p>
+                            </div>
+                            <div class="image-right">
+                                <img src="assets/ai5.jpg" alt="Deep Learning Skill">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-slide">
+                        <div class="slide-content">
+                            <div class="text-left">
+                                <h3>Natural Language Processing</h3>
+                                <p>Skilled in text processing, sentiment analysis, and language model development.</p>
+                            </div>
+                            <div class="image-right">
+                                <img src="assets/ai6.jpg" alt="NLP Skill">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-indicators">
+                    <div class="vertical-indicator active" data-slide="0"></div>
+                    <div class="vertical-indicator" data-slide="1"></div>
+                    <div class="vertical-indicator" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>AI Experience</h2>
+            <div class="vertical-carousel" id="carousel3">
+                <div class="vertical-carousel-inner" id="carouselInner3">
+                    <div class="vertical-slide">
+                        <div class="slide-content">
+                            <div class="text-left">
+                                <h3>Research Assistant</h3>
+                                <p>Worked on cutting-edge AI research projects at a leading tech company.</p>
+                            </div>
+                            <div class="image-right">
+                                <img src="assets/ai7.jpg" alt="Research Assistant Experience">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-slide">
+                        <div class="slide-content">
+                            <div class="text-left">
+                                <h3>AI Developer</h3>
+                                <p>Developed AI-powered applications for various industries including healthcare and finance.</p>
+                            </div>
+                            <div class="image-right">
+                                <img src="assets/ai8.jpg" alt="AI Developer Experience">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-slide">
+                        <div class="slide-content">
+                            <div class="text-left">
+                                <h3>Consultant</h3>
+                                <p>Provided AI consulting services to startups and enterprises for digital transformation.</p>
+                            </div>
+                            <div class="image-right">
+                                <img src="assets/ai9.jpg" alt="Consultant Experience">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-indicators">
+                    <div class="vertical-indicator active" data-slide="0"></div>
+                    <div class="vertical-indicator" data-slide="1"></div>
+                    <div class="vertical-indicator" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="stage-container">
+                <div class="stage" aria-label="Circular highlight selection diagram">
+                    <div class="ring" aria-hidden="true"></div>
+
+                    <!-- Nodes injected by JS -->
+                    <div class="hint">Click a node to zoom in. Use Tab + Enter for keyboard.</div>
+                </div>
+                <div class="node-panel" id="nodePanel">
+                    <div class="panel-header">
+                        <h3 id="panelTitle">Select a Node</h3>
+                    </div>
+                    <div class="panel-content">
+                        <p id="panelDescription">Click on any node in the diagram to view detailed information about it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <script>
+        const carouselInner = document.getElementById('carouselInner');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const slideInterval = 500000; // 5000 seconds
+
+        const titles = [
+            "AI as a companion",
+            "Programming AI",
+            "Incredible Tools"
+        ];
+
+        const descriptions = [
+            "We are exploring how LLM can helps us in our journey.",
+            "We will use Python in order to develop application with the AI.",
+            "Some of the amazing tools I've developed."
+        ];
+
+        function updateText() {
+            document.getElementById('title1').textContent = titles[currentSlide];
+            document.getElementById('desc1').textContent = descriptions[currentSlide];
+            // For the second text section, perhaps cycle or something, but user said two sections that change
+            // Maybe the second one is fixed or cycles differently. User said "2 text sections that after each image transition will change to these values"
+            // The values are three, so probably both sections change to the corresponding text.
+            // But there are two sections and three texts. Perhaps one section has title, other has desc, but that doesn't match.
+            // Looking back: "There is going to be 2 text sections that after each image transition will change to these values:"
+            // Then lists three bullet points, each with title: description.
+            // So probably the two sections are for the first two, and third is separate? But that doesn't make sense.
+            // Perhaps the two sections change together for each slide.
+            // To make it simple, I'll make both sections change to the current slide's text.
+            // But user said "2 text sections", perhaps one is title, one is desc.
+            // But there are three sets.
+            // Perhaps the second section is fixed, but user said they change.
+            // I'll assume both change to the same text for each slide.
+            document.getElementById('title2').textContent = titles[currentSlide];
+            document.getElementById('desc2').textContent = descriptions[currentSlide];
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            carouselInner.style.transform = `translateX(-${slideIndex * 33.333}%)`;
+            indicators.forEach((ind, index) => {
+                ind.classList.toggle('active', index === slideIndex);
+            });
+            updateText();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }
+
+        // Auto slide
+        setInterval(nextSlide, slideInterval);
+
+        // Click indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Initialize
+        updateText();
+    </script>
+
+    <script>
+        // Vertical Carousel 1
+        const carouselInner1 = document.getElementById('carouselInner1');
+        const indicators1 = document.querySelectorAll('#carousel1 .vertical-indicator');
+        let currentSlide1 = 0;
+        const totalSlides1 = 3;
+
+        function goToSlide1(slideIndex) {
+            currentSlide1 = slideIndex;
+            carouselInner1.style.transform = `translateY(-${slideIndex * 33.333}%)`;
+            indicators1.forEach((ind, index) => {
+                ind.classList.toggle('active', index === slideIndex);
+            });
+        }
+
+        indicators1.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide1(index));
+        });
+
+        // Vertical Carousel 2
+        const carouselInner2 = document.getElementById('carouselInner2');
+        const indicators2 = document.querySelectorAll('#carousel2 .vertical-indicator');
+        let currentSlide2 = 0;
+        const totalSlides2 = 3;
+
+        function goToSlide2(slideIndex) {
+            currentSlide2 = slideIndex;
+            carouselInner2.style.transform = `translateY(-${slideIndex * 33.333}%)`;
+            indicators2.forEach((ind, index) => {
+                ind.classList.toggle('active', index === slideIndex);
+            });
+        }
+
+        indicators2.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide2(index));
+        });
+
+        // Vertical Carousel 3
+        const carouselInner3 = document.getElementById('carouselInner3');
+        const indicators3 = document.querySelectorAll('#carousel3 .vertical-indicator');
+        let currentSlide3 = 0;
+        const totalSlides3 = 3;
+
+        function goToSlide3(slideIndex) {
+            currentSlide3 = slideIndex;
+            carouselInner3.style.transform = `translateY(-${slideIndex * 33.333}%)`;
+            indicators3.forEach((ind, index) => {
+                ind.classList.toggle('active', index === slideIndex);
+            });
+        }
+
+        indicators3.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide3(index));
+        });
+
+        /**
+         * Data-driven nodes. Add more nodes here and they’ll auto-position on a circle.
+         * If you want specific positions (to match your mock exactly), you can set x/y manually.
+         */
+        const nodes = [
+        {
+            id: "programming-ai",
+            label: "Programming AI",
+            title: "Programming AI",
+            desc: "This is a description of the programming code I've done with AI. We are going to expand the description of this element to test its limits.",
+            color: "gold",
+            // custom position to match mock (upper-right)
+            x: 82, y: 28
+        },
+        {
+            id: "companion",
+            label: "Companion",
+            title: "Companion",
+            desc: "Notes about companion features, guidance, and co-writing support.",
+            color: "pink",
+            x: 25, y: 18
+        },
+        {
+            id: "demos",
+            label: "Demos",
+            title: "Demos",
+            desc: "Interactive demos that showcase workflows and example outputs.",
+            color: "blue",
+            x: 12, y: 58
+        },
+        {
+            id: "tools",
+            label: "Tools",
+            title: "Tools",
+            desc: "Utilities and integrations that speed up creation and iteration.",
+            color: "green",
+            x: 75, y: 82
+        },
+        ];
+
+        const stage = document.querySelector(".stage");
+
+        function createNode(n){
+        const btn = document.createElement("button");
+        btn.className = "node";
+        btn.type = "button";
+        btn.dataset.id = n.id;
+        btn.dataset.color = n.color;
+        btn.style.setProperty("--x", n.x);
+        btn.style.setProperty("--y", n.y);
+        btn.setAttribute("aria-pressed", "false");
+        btn.setAttribute("aria-label", n.title);
+
+        btn.innerHTML = `
+            <div class="node__inner">
+            <div class="node__label">${escapeHtml(n.label)}</div>
+            <div class="node__details">
+                <div class="node__title">${escapeHtml(n.title)}</div>
+                <div class="node__desc">${escapeHtml(n.desc)}</div>
+            </div>
+            </div>
+        `;
+        btn.addEventListener("click", () => selectNode(n.id));
+        btn.addEventListener("keydown", (e) => {
+            if(e.key === "Enter" || e.key === " "){
+            e.preventDefault();
+            selectNode(n.id);
+            }
+        });
+
+        return btn;
+        }
+
+        // Basic HTML escaping for safety if you later load data externally.
+        function escapeHtml(str){
+        return String(str)
+            .replaceAll("&","&amp;")
+            .replaceAll("<","&lt;")
+            .replaceAll(">","&gt;")
+            .replaceAll('"',"&quot;")
+            .replaceAll("'","&#039;");
+        }
+
+        // Render nodes
+        const nodeEls = new Map();
+        for(const n of nodes){
+        const el = createNode(n);
+        stage.appendChild(el);
+        nodeEls.set(n.id, el);
+        }
+
+        function selectNode(id){
+        for(const n of nodes){
+            const el = nodeEls.get(n.id);
+            const isSelected = (n.id === id);
+
+            el.classList.toggle("is-selected", isSelected);
+            el.classList.toggle("is-unselected", !isSelected);
+            el.setAttribute("aria-pressed", String(isSelected));
+        }
+
+        // Update the panel with selected node information
+        const selectedNode = nodes.find(n => n.id === id);
+        if (selectedNode) {
+            const panel = document.getElementById('nodePanel');
+            const panelTitle = document.getElementById('panelTitle');
+            const panelDescription = document.getElementById('panelDescription');
+
+            panelTitle.textContent = selectedNode.title;
+            panelDescription.textContent = selectedNode.desc;
+            panel.dataset.color = selectedNode.color;
+        }
+        }
+
+        // Initial selection
+        selectNode("programming-ai");
+    </script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esteban Gallardo Garcia - Programming AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-bar .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-bar .nav-home {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-bar .nav-home:hover {
+            opacity: 0.8;
+        }
+
+        .nav-bar .page-title {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        /* Banner */
+        .banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 40px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .banner h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+            width: 100%;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section p {
+            line-height: 1.8;
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="ai.html" class="nav-home">← AI</a>
+            <div class="page-title">Programming AI</div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="section">
+            <h2>Programming AI with Python</h2>
+            <p>Python has emerged as the premier language for AI development due to its simplicity, extensive libraries, and strong community support. My approach to programming AI applications focuses on leveraging Python's ecosystem to create robust, scalable, and efficient solutions.</p>
+            
+            <h3>Key Python Libraries for AI</h3>
+            <ul>
+                <li><strong>TensorFlow:</strong> Google's open-source framework for machine learning and deep learning.</li>
+                <li><strong>PyTorch:</strong> Facebook's dynamic neural network library, known for its flexibility.</li>
+                <li><strong>Scikit-learn:</strong> Essential for traditional machine learning algorithms.</li>
+                <li><strong>NLTK and SpaCy:</strong> Powerful tools for natural language processing.</li>
+                <li><strong>OpenCV:</strong> Computer vision library for image and video analysis.</li>
+            </ul>
+
+            <h3>Example: Simple Neural Network with TensorFlow</h3>
+            <div class="code-block">
+import tensorflow as tf
+from tensorflow import keras
+
+# Define a simple neural network
+model = keras.Sequential([
+    keras.layers.Dense(128, activation='relu', input_shape=(784,)),
+    keras.layers.Dense(10, activation='softmax')
+])
+
+# Compile the model
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Train the model (assuming x_train, y_train are defined)
+# model.fit(x_train, y_train, epochs=5)
+            </div>
+
+            <p>Through my projects, I've developed applications ranging from predictive analytics systems to intelligent chatbots. Each project emphasizes clean code, thorough testing, and integration with existing systems to deliver practical AI solutions.</p>
+        </div>
+    </div>
+</body>
+</html>
